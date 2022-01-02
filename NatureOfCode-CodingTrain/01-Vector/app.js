@@ -1,4 +1,4 @@
-import Walker from "./objects/Walker.js";
+import Pendulum from "./Pendulum.js";
 
 class App {
   constructor() {
@@ -24,13 +24,13 @@ class App {
     this.canvas.height = Math.floor(this.fullHeight * this.scale);
     this.ctx.scale(this.scale, this.scale);
 
-    this.walker = new Walker(this.fullWidth / 2, this.fullHeight / 2, 20);
+    this.pendulum = new Pendulum(this.fullWidth, this.fullHeight);
   }
   animate() {
     window.requestAnimationFrame(this.animate.bind(this));
     this.ctx.clearRect(0, 0, this.fullWidth, this.fullHeight);
 
-    this.walker.draw(this.ctx);
+    this.pendulum.draw(this.ctx);
   }
 }
 
