@@ -4,6 +4,8 @@ secrets.json
 
 .venv
 
+venv/
+
 .idea/
 
 .cache/
