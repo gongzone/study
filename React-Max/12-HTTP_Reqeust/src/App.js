@@ -38,9 +38,23 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
-  const addMovieHandler = (movie) => {
-    console.log(movie);
-  };
+  // const addMovieHandler = async (movie) => {
+  //   try {
+  //     const response = await fetch("https://oursite.domain/something", {
+  //       method: "POST",
+  //       body: JSON.stringify(movie),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Something went wrong");
+  //     }
+
+  //     const data = await response.json();
+  //   } catch (error) {}
+  // };
 
   let content = <p>Found no movies.</p>;
 
