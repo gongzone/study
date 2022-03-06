@@ -1,8 +1,20 @@
 import sys
+
 getInput = sys.stdin.readline
 
-string_input = getInput().rstrip()
+string_input = list(getInput().rstrip())
+result = []
+value = 0
 
-string_input.sort()
+for x in string_input:
+  if x.isalpha():
+    result.append(x)
+  else:
+    value += int(x)
 
-print(string_input)
+result.sort()
+
+if value != 0:
+  result.append(str(value))
+
+print(''.join(result))
