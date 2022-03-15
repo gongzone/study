@@ -1,18 +1,19 @@
 import sys
-
 getInput = sys.stdin.readline
 
 n = int(getInput())
-data = list(map(int, getInput().rstrip().split()))
-data.sort()
+array = list(map(int, getInput().rstrip().split()))
+array.sort()
 
+result = 0
 count = 0
-group_number = 0
 
-for i in data:
+for i in array:
   count += 1
   if count >= i:
-    group_number += 1
+    result += 1
     count = 0
 
-print(group_number)
+print(result)
+
+

@@ -1,24 +1,18 @@
 import sys
+getInput = sys.stdin.readline
 
-# 그리디 - 02.큰 수의 법칙
-# 핵심: 반복되는 수열 파악 (제일 큰 수는 몇번 반복, 그 다음 큰수는 몇번 반복)
+n, m, k = map(int, getInput().rstrip().split()) # n: 배열의 길이, m: 더할 수 있는 개수, k: 반복 허용 개수 
+array = list(map(int, getInput().rstrip().split()))
+array.sort() # 오름차순 정렬
 
-# N, M, K를 공백으로 구분하여 입력받기
-n, m, k = map(int, sys.stdin.readline().split())
+first_num = array[n-1] # 첫 번쨰로 큰 수
+second_num = array[n-2] # 두 번째로 큰 수
+count = 0 # 첫 번째로 큰 수가 더해지는 횟수
 
-# N개의 수를 공백으로 구분하여 입력받기
-data = list(map(int, sys.stdin.readline().split()))
-
-data.sort() # 입력받은 수 정렬
-first = data[n-1]  # 가장 큰 수
-second = data[n-2]  # 두 번째로 큰 수
-
-# 가장 큰 수가 더해지는 횟수 계산
 count = (m // (k+1)) * k
-count += m % (k + 1)
+count += m % (k+1)
 
-result = 0
-result += count * first # 가장 큰 수 더하기
-result += (m - count) * second # 두 번째로 큰 수 더하기
+answer = first_num * count
+answer += second_num * (m - count) 
 
-print(result) # 최종 답안 제출
+print(answer)
