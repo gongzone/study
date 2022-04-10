@@ -6,3 +6,5 @@ context.doSomeBuisinessLogic('data');
 
 context.setStrategy(new ConcreteStrategyB());
 context.doSomeBuisinessLogic('data');
+
+console.log('hi');
