@@ -18,8 +18,30 @@
     </style>
   </head>
   <body>
-    <uc-modal><p>With Your confirmation you agree to pay the full amount!</p></uc-modal>
+    <uc-modal>
+      <h1 slot="title">Please Confirm</h1>
+      <p>With Your confirmation you agree to pay the full amount!</p>
+    </uc-modal>
     <p>Please confirm your choice.</p>
     <button>Show Details & Confirm</button>
   </body>
+  <script>
+    const confirmButton = document.querySelector('button');
+    const modal = document.querySelector('uc-modal');
+
+    modal.addEventListener('confirm', () => {
+      console.log('Confirmed...');
+    });
+
+    modal.addEventListener('cancel', () => {
+      console.log('Cancelled...');
+    });
+
+    confirmButton.addEventListener('click', () => {
+      if (!modal.isOpen) {
+        modal.open();
+        console.log('Opening');
+      }
+    });
+  </script>
 </html>
