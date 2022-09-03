@@ -1,23 +1,53 @@
+// export class Order {
+//   constructor(quantity, itemPrice) {
+//     this.quantity = quantity;
+//     this.itemPrice = itemPrice;
+//   }
+
+//   get finalPrice() {
+//     const basePrice = this.quantity * this.itemPrice;
+//     let discountLevel;
+//     if (this.quantity > 100) discountLevel = 2;
+//     else discountLevel = 1;
+//     return this.discountedPrice(basePrice, discountLevel);
+//   }
+
+//   discountedPrice(basePrice, discountLevel) {
+//     switch (discountLevel) {
+//       case 1:
+//         return basePrice * 0.95;
+//       case 2:
+//         return basePrice * 0.9;
+//     }
+//   }
+// }
+
+/* Replace Parameter with Query */
+
 export class Order {
   constructor(quantity, itemPrice) {
     this.quantity = quantity;
     this.itemPrice = itemPrice;
   }
 
-  get finalPrice() {
-    const basePrice = this.quantity * this.itemPrice;
-    let discountLevel;
-    if (this.quantity > 100) discountLevel = 2;
-    else discountLevel = 1;
-    return this.discountedPrice(basePrice, discountLevel);
+  get basePrice() {
+    return this.quantity * this.itemPrice;
   }
 
-  discountedPrice(basePrice, discountLevel) {
-    switch (discountLevel) {
+  get finalPrice() {
+    return this.discountedPrice();
+  }
+
+  get discountLevel() {
+    return this.quantity > 100 ? 2 : 1;
+  }
+
+  discountedPrice() {
+    switch (this.discountLevel) {
       case 1:
-        return basePrice * 0.95;
+        return this.basePrice * 0.95;
       case 2:
-        return basePrice * 0.9;
+        return this.basePrice * 0.9;
     }
   }
 }

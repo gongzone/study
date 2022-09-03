@@ -1,20 +1,61 @@
-export function score(candidate, medicalExam, scoringGuide) {
-  let result = 0;
-  let healthLevel = 0;
-  let highMedicalRiskFlag = false;
+// export function score(candidate, medicalExam, scoringGuide) {
+//   let result = 0;
+//   let healthLevel = 0;
+//   let highMedicalRiskFlag = false;
 
-  if (medicalExam.isSmoker) {
-    healthLevel += 10;
-    highMedicalRiskFlag = true;
+//   if (medicalExam.isSmoker) {
+//     healthLevel += 10;
+//     highMedicalRiskFlag = true;
+//   }
+//   let certificationGrade = 'regular';
+//   if (scoringGuide.stateWithLowCertification(candidate.originState)) {
+//     certificationGrade = 'low';
+//     result -= 5;
+//   }
+//   // lots more code like this
+//   result -= Math.max(healthLevel - 5, 0);
+//   return result;
+// }
+
+// export class ScoringGuide {
+//   stateWithLowCertification(state) {
+//     return state < 5;
+//   }
+// }
+
+/* Replace Function with Command */
+
+export function score(candidate, medicalExam, scoringGuide) {
+  return new Scorer(candidate, medicalExam, scoringGuide).execute();
+}
+
+class Scorer {
+  constructor(candidate, medicalExam, scoringGuide) {
+    this.candidate = candidate;
+    this.medicalExam = medicalExam;
+    this.scoringGuide = scoringGuide;
   }
-  let certificationGrade = 'regular';
-  if (scoringGuide.stateWithLowCertification(candidate.originState)) {
-    certificationGrade = 'low';
-    result -= 5;
+
+  execute() {
+    let result = 0;
+    let healthLevel = 0;
+    let highMedicalRiskFlag = false;
+
+    if (this.medicalExam.isSmoker) {
+      healthLevel += 10;
+      highMedicalRiskFlag = true;
+    }
+
+    let certificationGrade = 'regular';
+    if (this.scoringGuide.stateWithLowCertification(this.candidate.originState)) {
+      certificationGrade = 'low';
+      result -= 5;
+    }
+
+    // lots more code like this
+    result -= Math.max(healthLevel - 5, 0);
+    return result;
   }
-  // lots more code like this
-  result -= Math.max(healthLevel - 5, 0);
-  return result;
 }
 
 export class ScoringGuide {
