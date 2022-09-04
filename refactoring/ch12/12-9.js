@@ -1,3 +1,7 @@
-class Employee {}
+// class Employee {}
 
-class Salesperson extends Employee {}
+// class Salesperson extends Employee {}
+
+/* Collapse Hierarchy */
+
+class Employee {}
